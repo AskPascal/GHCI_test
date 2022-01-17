@@ -1,0 +1,23 @@
+name: remotes install on windows
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  install-check:
+    runs-on: windows-latest
+
+    steps:
+      - uses: r-lib/actions/setup-r@v1
+
+      - name: Install {remotes}
+        run: |
+          install.packages("remotes")
+        shell: Rscript {0}
+
+      - name: Test install
+        run: |
+          remotes::install_github(repo="Olink-Proteomics/Nexus-R", ref="${{ GITHUB_SHA }}", subdir="nexusr", auth_token="${{ secrets.GITHUB_TOKEN }}")
+        shell: Rscript {0}
+
