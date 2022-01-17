@@ -18,6 +18,6 @@ jobs:
 
       - name: Test install
         run: |
-          remotes::install_github(repo="Olink-Proteomics/Nexus-R", ref="${{ env.GITHUB_SHA }}", subdir="nexusr", auth_token="${{ secrets.GITHUB_TOKEN }}")
+          remotes::install_github(repo="Olink-Proteomics/Nexus-R", ref="${{ github.sha }}", subdir="nexusr", auth_token="${{ secrets.GITHUB_TOKEN }}")
         shell: Rscript {0}
 
