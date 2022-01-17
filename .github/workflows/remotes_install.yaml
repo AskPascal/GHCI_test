@@ -1,8 +1,8 @@
 name: remotes install on windows
 
 on:
-  pull_request:
-    types: [opened, reopened]
+  pull_request
+
 
 jobs:
   install-check:
@@ -18,6 +18,6 @@ jobs:
 
       - name: Test install
         run: |
-          remotes::install_github(repo="Olink-Proteomics/Nexus-R", ref="${{ GITHUB_SHA }}", subdir="nexusr", auth_token="${{ secrets.GITHUB_TOKEN }}")
+          remotes::install_github(repo="Olink-Proteomics/Nexus-R", ref="${{ github.event.pull_request.head.sha }}", subdir="nexusr", auth_token="${{ secrets.GITHUB_TOKEN }}")
         shell: Rscript {0}
 
