@@ -1,8 +1,7 @@
 name: remotes install on windows
 
 on:
-  pull_request:
-    types: [opened, reopened]
+  pull_request
 
 
 jobs:
